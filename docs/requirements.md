@@ -8,6 +8,10 @@ A basic calculator app.
 2. CSS
 3. Javascript
 
+## Wireframe
+
+## MVP (minimal viable product)
+
 
 
 ## Buttons/Features
@@ -25,4 +29,4 @@ A basic calculator app.
 4. / - Takes the last number in memory and figures out how many times the previous number goes into it.
 5. * - mulitplies the 
 
-## MVP (minimal viable product)
+
