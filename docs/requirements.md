@@ -1,6 +1,6 @@
 # Calculator Application
 
-An app that mimicks a basic calculator.
+A basic calculator app.
 
 ## Tech
 
