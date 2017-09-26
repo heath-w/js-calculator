@@ -1,63 +1,75 @@
 var solarPanel = document.getElementById( 'solarPanel' );
 var display = document.getElementById( 'display' );
-var allClearButton = document.getElementById( 'allClearButton' );
-var clearButton = document.getElementById( 'clearButton' );
-
-var signButton = document.getElementById( 'signButton' );
-var divideButton = document.getElementById( 'divideButton' );
-var multiplyButton = document.getElementById( 'multiplyButton' );
-var subtractButton = document.getElementById( 'subtractButton' );
-var addButton = document.getElementById( 'addButton' );
-var decimalButton = document.getElementById( 'decimalButton' );
-var equalButton = document.getElementById( 'equalButton' );
-
 var digits = document.getElementsByClassName( 'numeric' );
 var keys = document.getElementsByClassName( 'key' );
 
+var value1, value2, selectedOperator;
 
 // Wait for page to load
 document.onreadystatechange = function() {
-	if ( document.readyState === 'interactive' ) {
+	
+	allClear();
 
+	if ( document.readyState === 'interactive' ) {
 		for ( i = 0; i < keys.length; i++ ) {
 			keys[ i ].addEventListener( 'click', ButtonLogic );
 		}
-
-		// for ( i = 0; i < digits.length; i++ ) {
-		// 	digits[ i ].addEventListener( 'click', ButtonLogic );
-		// }
-
-		// solarPanel.addEventListener( 'click', Surprise );
-		// signButton.addEventListener( 'click', Sign );
-		// divideButton.addEventListener( 'click', Divide );
-		// multiplyButton.addEventListener( 'click', Multiply );
-		// subtractButton.addEventListener( 'click', Subtract );
-		// addButton.addEventListener( 'click', Add );
-		// decimalButton.addEventListener( 'click', Decimal );
-		// equalButton.addEventListener( 'click', Equal );
-
 	}
+	
 };
 
 function ButtonLogic( e ) {
-	
 
 	var keyLabel = this.innerHTML;
 	console.log( 'You clicked me! %s', keyLabel );
 
+	if ( this.classList.contains( 'numeric' ) ) {
+		if ( display.innerHTML === '0' ) {
+			display.innerHTML = keyLabel;
+		}
+		else {
+			display.innerHTML += keyLabel;
+		}
+	}
+	else if ( this.classList.contains( 'decimal' ) ) {
+		console.log( 'This is a decimal: %s', keyLabel );
+	}
+	else if ( this.classList.contains( 'operator' ) ) {
+		console.log( 'This is a operator: %s', keyLabel );
+		selectedOperator = keyLabel;
+	}
+	else if ( this.classList.contains( 'all-clear' ) ) {
+		console.log( 'This is all clear: %s', keyLabel );
+		allClear();
+	}
+	else if ( this.classList.contains( 'clear' ) ) {
+		console.log( 'This is clear: %s', keyLabel );
+		clear();
+	}
+	else if ( this.classList.contains( 'sign' ) ) {
+		console.log( 'This is sign: %s', keyLabel );
+		clear();
+	}
 
+	
+}
 
+function allClear() {
+	console.log( 'All clear' );
 
-	// var digit = this.innerHTML;
-	// var currentDisplay = display.innerHTML;
+	value1 = '';
+	value2 = '';
+	selectedOperator = '';
+	display.innerHTML = '0';
+}
 
-	// if ( currentDisplay === '0' ) {
-	// 	display.innerHTML = digit;
-	// }
-	// else {
-	// 	display.innerHTML = currentDisplay + digit;
-	// }
-
+function clear() {
+	if ( selectedOperator === '' ) {
+		value1 = '';
+	}
+	else {
+		value2 = '';
+	}
 }
 
 function Sign( e ) {}
