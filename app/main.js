@@ -21,7 +21,6 @@ document.onreadystatechange = function() {
 };
 
 function ButtonLogic( e ) {
-
 	var keyLabel = this.innerHTML;
 	console.log( 'You clicked me! %s', keyLabel );
 
@@ -52,9 +51,7 @@ function ButtonLogic( e ) {
 	else if ( this.classList.contains( 'clear' ) ) {
 		console.log( 'This is clear: %s', keyLabel );
 		clear();
-	}
-
-	
+	}	
 }
 
 function numeric( keyLabel ) {
