@@ -98,6 +98,10 @@ function properAppend( main, added ) {
 }
 
 function decimal( keyLabel ) {
+	if ( lastKeyPressed === '=' ) {
+		allClear();
+	}
+	
 	if ( selectedOperator === '' ) {
 		if ( value1.indexOf( '.' ) === -1 ) {
 			if ( value1 === '' ) {
