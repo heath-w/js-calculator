@@ -3,7 +3,7 @@ var display = document.getElementById( 'display' );
 var digits = document.getElementsByClassName( 'numeric' );
 var keys = document.getElementsByClassName( 'key' );
 
-var value1, value2, selectedOperator;
+var value1, value2, selectedOperator, lastKeyPressed = '';
 
 // Wait for page to load
 document.onreadystatechange = function() {
@@ -22,6 +22,7 @@ document.onreadystatechange = function() {
 
 function ButtonLogic( e ) {
 	var keyLabel = this.innerHTML;
+	
 	console.log( 'You clicked me! %s', keyLabel );
 
 	if ( this.classList.contains( 'numeric' ) ) {
@@ -52,9 +53,16 @@ function ButtonLogic( e ) {
 		console.log( 'This is clear: %s', keyLabel );
 		clear();
 	}	
+
+	lastKeyPressed = keyLabel;
+	keyLabel = '';
 }
 
 function numeric( keyLabel ) {
+	if ( lastKeyPressed === '=' ) {
+		allClear();
+	}
+
 	if ( selectedOperator === '' ) {
 		value1 = properAppend( value1, keyLabel );
 		display.innerHTML = value1;
