@@ -31,12 +31,19 @@ function ButtonLogic( e ) {
 			display.innerHTML += keyLabel;
 		}
 	}
-	else if ( this.classList.contains( 'decimal' ) ) {
-		console.log( 'This is a decimal: %s', keyLabel );
-	}
+	else if (this.classList.contains( 'decimal' ) ) {
+   
+    if (value1.indexOf('.') == -1) {
+      display.innerHTML = display.innerHTML + keyLabel;
+      value1 = value1 + keyLabel;
+    }
+    else { // There is already a decimal in this number; ignore it.
+    }    
+
+  }
 	else if ( this.classList.contains( 'operator' ) ) {
 		console.log( 'This is a operator: %s', keyLabel );
-		selectedOperator = keyLabel;
+		operator( keyLabel );
 	}
 	else if ( this.classList.contains( 'all-clear' ) ) {
 		console.log( 'This is all clear: %s', keyLabel );
@@ -48,7 +55,10 @@ function ButtonLogic( e ) {
 	}
 	else if ( this.classList.contains( 'sign' ) ) {
 		console.log( 'This is sign: %s', keyLabel );
-		clear();
+		// clear();
+	}
+	else if ( this.classList.contains( 'calculate' ) ) {
+		console.log( 'This is calculate: %s', keyLabel );
 	}
 
 	
@@ -64,23 +74,46 @@ function allClear() {
 }
 
 function clear() {
+	console.log( 'Clear' );
+
 	if ( selectedOperator === '' ) {
 		value1 = '';
 	}
 	else {
 		value2 = '';
 	}
+	display.innerHTML = '0';
 }
 
-function Sign( e ) {}
-function Divide( e ) {}
-function Multiply( e ) {}
-function Subtract( e ) {}
-function Add( e ) {}
-function Decimal( e ) {}
-function Equal( e ) {}
+function operator( keyLabel ) {
+	console.log( 'Operator' );
 
-function Surprise( e ) {
+	if ( value1 === '' ) {
+		value1 = '0';
+		selectedOperator = keyLabel;
+	}
+	else if ( value1 !== '' ) {
+
+		if ( selectedOperator === '' ) {
+			selectedOperator = keyLabel;
+		}
+		else {
+
+		}
+
+	}
+
+	
+}
+
+function Sign() {}
+function Divide() {}
+function Multiply() {}
+function Subtract() {}
+function Add() {}
+function Equal() {}
+
+function Surprise() {
 	console.log( 'SURPRISE!' );
 	alert( 'WHEEEE!' );
 }
